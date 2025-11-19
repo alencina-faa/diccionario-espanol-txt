@@ -10,7 +10,8 @@ from urllib.request import Request, urlopen
 Cabeceras para la simulación de un navegador
 """
 UA="Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0"
-url_list="https://dle.rae.es/{}/?m=31"
+url_list_empieza="https://dle.rae.es/{}/?m=31&f={}"
+url_list_termina="https://dle.rae.es/{}/?m=32&f={}"
 url_detail="https://dle.rae.es/{}"
 
 """
@@ -26,13 +27,15 @@ to_remove_from_title='Ir a la entrada '
 skip = len(to_remove_from_title)
 
 
-def get_xtree(url, param):
+def get_xtree(url, param, offset=0):
     tree = None
     attempt = 10
     while attempt > 0 and tree == None:
         try:
-            req = Request(url.format(quote(param)), headers={'User-Agent': UA})
+            req = Request(url.format(quote(param), offset), headers={'User-Agent': UA})
             webpage = urlopen(req, timeout=2)  # Set the timeout value to 10 seconds
+            # imprimit contenido
+            #print(webpage.read())
             htmlparser = etree.HTMLParser()
             tree = etree.parse(webpage, htmlparser)
         except Exception as e:
@@ -66,7 +69,7 @@ def try_me_siento_con_suerte(palabra, dict_dump):
     # pero puede haber situaciones de palabras que no estén en la lista de resultado de búsqueda y que sean palabras.
     print("Intentamos suerte " + palabra)
     tree = get_xtree(url_detail, palabra)
-    posible_palabra = tree.xpath('//*[@id="resultados"]/article/header/@title')
+    posible_palabra = tree.xpath('//*/h1[@class="c-page-header__title"]/text()')
     print(posible_palabra)
     if len(posible_palabra) > 0:
         print("Aceptamos:" + palabra)

@@ -6,6 +6,7 @@ import urllib.request
 
 parser = argparse.ArgumentParser(description='RAE Process data.')
 parser.add_argument('--inputfile', metavar='outfile no extension', type=str, default="data/raw/allwords")
+parser.add_argument('--termina', default="", type=str)
 parser.add_argument('--outputfile', metavar='outputfile', type=str, default="data/allwords")
 args = parser.parse_args()
 
@@ -19,6 +20,11 @@ letras = ['a', 'á', 'b', 'c', 'd', 'e', 'é', 'f', 'g', 'h', 'i', 'í', 'j', 'k
              'n', 'ñ', 'o', 'ó', 'p', 'q', 'r', 's', 't', 'u', 'ú', 'ü', 'v', 'w', 'x', 'y', 'z']
 
 
+if args.termina != "":
+    termina = "data/raw/allwords_termina"
+else:
+    termina = None
+
 collator = pyuca.Collator("src/allkeys.txt")
 
 palabras = []
@@ -28,6 +34,11 @@ for l in letras:
         words = pickle.load(f)
         keys = words.keys()
         palabras += keys
+    if termina:
+        with open(f"{termina}_{l}.pkl", 'rb') as f:
+            words = pickle.load(f)
+            keys = words.keys()
+            palabras += keys
 
 
 

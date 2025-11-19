@@ -1,34 +1,34 @@
-# List of all spanish words. Source RAE
+# List of all spanish words
 
-Work explained here:
-https://duenaslerin.com/diccionario-palabras-espanol-en-texto-script/
+This project has gained a lot of attention from researchers and application developers. I think that this information should be provided by the RAE organization. Meanwhile you can find the information here.
 
-Updated with RAE server in: 2024-05-22
-Updated with RAE server in: 2024-05-22
+> Updated with RAE server in: 2025-02-10
 
-## Run
+## Data layout
 
-Download all data from RAE
-
+```txt
+\- src: python source code
+\- data
+  \- analysis (WorkInProgress)
+  \- clean    (WorkInProgress)
+  \- meanings (WorkInProgress)
+  \- raw
+  \- archive
 ```
-python3 src/rae_downloader.py
-```
 
-It generates the file ```data/palabras_todas.txt``` by default.
+## Running
 
-## Clean and order
+Steps:
 
-
-It generates the file ```data/palabras_todas.txt``` by default.
-
-## Clean and order
+1. install requeriments
+2. run web scrapper (src/rae_downloader.py) saved as pickle files
+3. run post process ( convert to txt, sort, cleaning, etc.)
 
 
 
-Split in diferent files
-```
-bash src/spliter.sh
-```
+
+
+## Outdated information.
 
 Usage
 ```

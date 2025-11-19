@@ -10,11 +10,12 @@ import time
 import argparse
 import pickle
 
-from helpers import get_xtree, try_conjugacion, try_plural, try_me_siento_con_suerte, url_list, skip
+from helpers import get_xtree, try_conjugacion, try_plural, try_me_siento_con_suerte, url_list_empieza, url_list_termina, skip
 
 
 parser = argparse.ArgumentParser(description='RAE Downloader.')
 parser.add_argument('--ix', metavar='ix', type=int, required=True, help='Start with this letter index')
+parser.add_argument('--termina', dest='termina', action='store_true')
 parser.add_argument('--conjugaciones', action='store_true')
 parser.add_argument('--skip-conjugaciones', dest='conjugaciones', action='store_false')
 parser.set_defaults(conjugaciones=True)
@@ -32,6 +33,47 @@ print(f"Running with {args.ix}/{letras_count}: {start}")
 start_with = [start]
 dict_dump = {}
 
+if args.termina:
+    url_list = url_list_termina
+else:
+    url_list = url_list_empieza
+
+NITEMS=20
+
+def procesa(palabras):
+    # Se repiten palabras. Cuando por ejemplo aba tiene más de 30 y se exapande
+    # abaa, abab, etc... las primeras palabras no aparecen: aba
+    numpal = len(palabras)
+    for ix, pal in enumerate(palabras):        
+        if pal.startswith(","):
+            print("Tratada antes", pal)
+            continue
+
+        if ix+1 < numpal and palabras[ix+1].startswith(","):
+            pal = pal + palabras[ix+1]
+
+        print(pal)
+        dict_dump[pal] = pal
+        
+        """
+        This code is comented. It is not update with the last version of the RAE website.
+        TODO.
+        
+        if ", " not in pal_clean:
+            pal_list.append(pal_clean)
+        else:
+            pal_clean = pal_clean.split(", ")
+            for pal_clean_multi in pal_clean:
+                pal_list.append(pal_clean_multi)
+        """
+        """
+        for pal_ix in pal_list:
+            
+            #if args.conjugaciones:
+            #    try_conjugacion(pal_ix, dict_dump)
+            # try_plural(pal_ix, dict_dump)
+        """
+
 
 while len(start_with) != 0:
     palabra_start_with = start_with.pop(0)
@@ -42,31 +84,29 @@ while len(start_with) != 0:
     try_me_siento_con_suerte(palabra_start_with, dict_dump)
 
     tree = get_xtree(url_list, palabra_start_with)
-    res = tree.xpath('//*[@id="resultados"]/*/div[@class="n1"]/a/@title')
+    pags = tree.xpath('//*/*[@class="c-pagination"]/*/text()')
 
-    # Se repiten palabras. Cuando por ejemplo aba tiene más de 30 y se exapande
-    # abaa, abab, etc... las primeras palabras no aparecen: aba
-    for pal in res:
-        pal_clean = pal[skip:]
-        pal_list = []
+    res = tree.xpath('//*/article/h3/a/text()')
+    procesa(res)    
 
-        if ", " not in pal_clean:
-            pal_list.append(pal_clean)
-        else:
-            pal_clean = pal_clean.split(", ")
-            for pal_clean_multi in pal_clean:
-                pal_list.append(pal_clean_multi)
-        
-        for pal_ix in pal_list:
-            print(pal_ix)
-            dict_dump[pal_ix] = pal_ix
-            if args.conjugaciones:
-                try_conjugacion(pal_ix, dict_dump)
-            # try_plural(pal_ix, dict_dump)
-            
-    
+    if pags:
+        npags = max([int(x,0) for x in pags if x.isdigit()])
+        print("Hay páginas")
+        for page in range(npags):
+            if page == 0:
+                continue
+            print("Página: " + str(page))
+            fparam = page*NITEMS 
 
-    if(len(res)>30):
+            tree = get_xtree(url_list, palabra_start_with, fparam)
+            res = tree.xpath('//*/article/h3/a/text()')
+            res = res + tree.xpath('//*/article/h3/a/i/text()')
+            procesa(res)
+
+    else:
+        print("No hay páginas")    
+
+    if pags:
         print("!" * 80)
         print("EXAPEND: " + palabra_start_with)
         expand = [palabra_start_with + l for l in letras]
