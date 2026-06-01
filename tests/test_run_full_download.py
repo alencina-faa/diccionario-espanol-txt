@@ -53,7 +53,7 @@ class RunFullDownloadTests(unittest.TestCase):
         self.assertEqual(len(recorded), 3)
         self.assertEqual(recorded[0][0][-4:], ["--ix", "0", "--outfile", "data/raw/allwords"])
         self.assertEqual(recorded[1][0][-5:], ["--ix", "0", "--termina", "--outfile", "data/raw/allwords_termina"])
-        self.assertEqual(recorded[2][0][-6:], ["--inputfile", "data/raw/allwords", "--outputfile", "data/allwords", "--termina", "1"])
+        self.assertEqual(recorded[2][0][-5:], ["--inputfile", "data/raw/allwords", "--outputfile", "data/allwords", "--termina"])
 
     def test_invalid_range_exits(self):
         with patch.object(sys, "argv", ["run_full_download.py", "--from-ix", "3", "--to-ix", "1"]):

@@ -104,7 +104,7 @@ def main() -> int:
         args.outputfile,
     ]
     if args.termina:
-        post_cmd.extend(["--termina", "1"])
+        post_cmd.append("--termina")
 
     print("Running post-process step")
     run_command(post_cmd, cwd=repo_root)

@@ -8,7 +8,7 @@ import pyuca
 def parse_args(argv=None):
     parser = argparse.ArgumentParser(description='RAE Process data.')
     parser.add_argument('--inputfile', metavar='outfile no extension', type=str, default="data/raw/allwords")
-    parser.add_argument('--termina', default="", type=str)
+    parser.add_argument('--termina', action='store_true')
     parser.add_argument('--outputfile', metavar='outputfile', type=str, default="data/allwords")
     return parser.parse_args(argv)
 
@@ -23,7 +23,7 @@ letras = ['a', 'á', 'b', 'c', 'd', 'e', 'é', 'f', 'g', 'h', 'i', 'í', 'j', 'k
 
 
 def get_termina_inputfile(args):
-    if args.termina != "":
+    if args.termina:
         return "data/raw/allwords_termina"
     return None
 
@@ -60,30 +60,5 @@ def main(argv=None):
     process_words(args.inputfile, args.outputfile, termina_inputfile, collator_path)
     return 0
 
-#paraborrar = ["(impersonal:", "(solo", ")"]
-#for borrar in paraborrar:
-#    palabras.remove(borrar)
-
 if __name__ == "__main__":
     raise SystemExit(main())
-
-"-", ""
-
-"""
-
-
-
-
-longitudes = {}
-
-for palabra in palabras:
-    longitud = len(palabra)
-    if longitud in longitudes:
-        longitudes[longitud] += palabra
-    else:
-        longitudes[longitud] = [palabra]
-
-for longitud in longitudes:
-    longitudes[longitud] = sorted(longitudes[longitud], key=collator.sort_key)
-
-"""

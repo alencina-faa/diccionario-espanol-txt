@@ -102,7 +102,6 @@ class PostProcessTests(unittest.TestCase):
                 "--outputfile",
                 "data/result_termina",
                 "--termina",
-                "1",
             ]
             self.run_post_process(temp_root, argv)
 

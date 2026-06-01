@@ -5,24 +5,19 @@
 import argparse
 import pickle
 
-from helpers import get_xtree, try_conjugacion, try_plural, try_me_siento_con_suerte, url_list_empieza, url_list_termina, skip
+from helpers import get_xtree, try_me_siento_con_suerte, url_list_empieza, url_list_termina
 
 
 def parse_args(argv=None):
     parser = argparse.ArgumentParser(description='RAE Downloader.')
     parser.add_argument('--ix', metavar='ix', type=int, required=True, help='Start with this letter index')
     parser.add_argument('--termina', dest='termina', action='store_true')
-    parser.add_argument('--conjugaciones', action='store_true')
-    parser.add_argument('--skip-conjugaciones', dest='conjugaciones', action='store_false')
-    parser.set_defaults(conjugaciones=True)
-    parser.add_argument('--plurals', default=True)
     parser.add_argument('--outfile', metavar='outfile no extension', type=str, default="data/raw/allwords")
     return parser.parse_args(argv)
 
 
 letras = ['a', 'á', 'b', 'c', 'd', 'e', 'é', 'f', 'g', 'h', 'i', 'í', 'j', 'k', 'l', 'm',
              'n', 'ñ', 'o', 'ó', 'p', 'q', 'r', 's', 't', 'u', 'ú', 'ü', 'v', 'w', 'x', 'y', 'z']
-#letras = ['s', 'i', 'í']
 
 
 def get_url_list(termina):
@@ -30,7 +25,7 @@ def get_url_list(termina):
         return url_list_termina
     return url_list_empieza
 
-NITEMS=20
+NITEMS = 20
 
 def procesa(palabras, dict_dump):
     # Se repiten palabras. Cuando por ejemplo aba tiene más de 30 y se exapande

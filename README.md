@@ -54,6 +54,7 @@ Important details:
 1. One execution only processes one letter index.
 2. Output is written as files like data/raw/allwords_a.pkl by default.
 3. --termina switches from the empieza por index to the termina en index used by the RAE site.
+4. Old conjugation and plural CLI flags were removed because they were not active in the current scraper implementation.
 
 ### src/post_process.py
 
@@ -63,6 +64,12 @@ Example:
 
 ```bash
 python src/post_process.py --inputfile data/raw/allwords --outputfile data/allwords
+```
+
+If you also downloaded the termina dataset:
+
+```bash
+python src/post_process.py --inputfile data/raw/allwords --outputfile data/allwords --termina
 ```
 
 This generates:
@@ -139,6 +146,8 @@ Current test coverage includes:
 
 1. Plural generation rules in src/helpers.py.
 2. Command orchestration in src/run_full_download.py.
+3. Post-processing with temporary pickle fixtures.
+4. Downloader orchestration without network access.
 
 ## Limitations
 
