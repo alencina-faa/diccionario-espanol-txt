@@ -1,6 +1,5 @@
 import os
 import pickle
-import runpy
 import sys
 import tempfile
 import types
@@ -10,11 +9,9 @@ from unittest.mock import patch
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-SCRIPT_PATH = REPO_ROOT / "src" / "post_process.py"
-LETTERS = [
-    "a", "á", "b", "c", "d", "e", "é", "f", "g", "h", "i", "í", "j", "k", "l", "m",
-    "n", "ñ", "o", "ó", "p", "q", "r", "s", "t", "u", "ú", "ü", "v", "w", "x", "y", "z",
-]
+SRC_DIR = REPO_ROOT / "src"
+if str(SRC_DIR) not in sys.path:
+    sys.path.insert(0, str(SRC_DIR))
 
 
 class FakeCollator:
@@ -23,6 +20,17 @@ class FakeCollator:
 
     def sort_key(self, value):
         return value
+
+
+fake_pyuca = types.SimpleNamespace(Collator=FakeCollator)
+with patch.dict(sys.modules, {"pyuca": fake_pyuca}):
+    import post_process
+
+
+LETTERS = [
+    "a", "á", "b", "c", "d", "e", "é", "f", "g", "h", "i", "í", "j", "k", "l", "m",
+    "n", "ñ", "o", "ó", "p", "q", "r", "s", "t", "u", "ú", "ü", "v", "w", "x", "y", "z",
+]
 
 
 class PostProcessTests(unittest.TestCase):
@@ -35,15 +43,13 @@ class PostProcessTests(unittest.TestCase):
                 pickle.dump(payload, handle)
 
     def run_post_process(self, temp_root, argv):
-        fake_pyuca = types.SimpleNamespace(Collator=FakeCollator)
         previous_cwd = Path.cwd()
         try:
             os.chdir(temp_root)
-            with patch.object(sys, "argv", argv):
-                with patch.dict(sys.modules, {"pyuca": fake_pyuca}):
-                    runpy.run_path(str(SCRIPT_PATH), run_name="__main__")
+            exit_code = post_process.main(argv[1:])
         finally:
             os.chdir(previous_cwd)
+        self.assertEqual(exit_code, 0)
 
     def test_generates_sorted_unique_output_from_pickles(self):
         with tempfile.TemporaryDirectory() as temp_dir:
