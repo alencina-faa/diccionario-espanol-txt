@@ -11,6 +11,9 @@ UA="Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.
 url_list_empieza="https://dle.rae.es/{}/?m=31&f={}"
 url_list_termina="https://dle.rae.es/{}/?m=32&f={}"
 url_detail="https://dle.rae.es/{}"
+REQUEST_TIMEOUT_SECONDS = 2
+RETRY_ATTEMPTS = 10
+RETRY_DELAY_SECONDS = 10
 
 """
 Usamos title por que el contenido en determinadas situaciones cambia:
@@ -29,19 +32,27 @@ def build_request(url, param, offset=0):
     return Request(url.format(quote(param), offset), headers={'User-Agent': UA})
 
 
-def get_xtree(url, param, offset=0):
+def get_xtree(url, param, offset=0, urlopen_fn=urlopen, sleep_fn=time.sleep):
     tree = None
-    attempt = 10
+    attempt = RETRY_ATTEMPTS
+    last_error = None
     while attempt > 0 and tree is None:
         try:
             req = build_request(url, param, offset)
-            webpage = urlopen(req, timeout=2)  # Set the timeout value to 10 seconds
+            webpage = urlopen_fn(req, timeout=REQUEST_TIMEOUT_SECONDS)
             htmlparser = etree.HTMLParser()
             tree = etree.parse(webpage, htmlparser)
         except Exception as e:
+            last_error = e
             attempt -= 1
             print(str(e))
-            time.sleep(10)
+            if attempt > 0:
+                sleep_fn(RETRY_DELAY_SECONDS)
+
+    if tree is None:
+        raise RuntimeError(
+            f"Failed to fetch RAE page for '{param}' after {RETRY_ATTEMPTS} attempts."
+        ) from last_error
 
     return tree
 

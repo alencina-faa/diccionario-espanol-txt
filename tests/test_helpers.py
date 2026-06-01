@@ -10,10 +10,11 @@ if str(SRC_DIR) not in sys.path:
 
 
 if "lxml" not in sys.modules:
-    sys.modules["lxml"] = types.SimpleNamespace(etree=object())
+    sys.modules["lxml"] = types.SimpleNamespace(etree=types.SimpleNamespace())
 
 
-from helpers import extract_conjugacion_forms, formar_plural, has_conjugation, has_page_header_word, is_confirmed_plural
+import helpers
+from helpers import build_request, extract_conjugacion_forms, formar_plural, get_xtree, has_conjugation, has_page_header_word, is_confirmed_plural
 
 
 class FakeTree:
@@ -76,6 +77,58 @@ class HelperExtractionTests(unittest.TestCase):
         tree = FakeTree({'//*[@id="resultados"]/div[@class="otras"]/p/text()': ["Plural de reloj: relojes"]})
 
         self.assertFalse(is_confirmed_plural(tree, "relojs"))
+
+
+class HelperNetworkTests(unittest.TestCase):
+    def test_build_request_quotes_param_and_sets_user_agent(self):
+        request = build_request("https://example.test/{}/?f={}", "sí", 20)
+
+        self.assertEqual(request.full_url, "https://example.test/s%C3%AD/?f=20")
+        self.assertEqual(request.get_header("User-agent"), helpers.UA)
+
+    def test_get_xtree_retries_and_returns_tree(self):
+        calls = []
+        sleeps = []
+        tree = object()
+
+        def fake_urlopen(_request, timeout):
+            calls.append(timeout)
+            if len(calls) < 3:
+                raise OSError("temporary failure")
+            return "response"
+
+        helpers.etree.HTMLParser = lambda: "parser"
+        helpers.etree.parse = lambda webpage, parser: tree
+
+        result = get_xtree(
+            "https://example.test/{}/?f={}",
+            "casa",
+            urlopen_fn=fake_urlopen,
+            sleep_fn=sleeps.append,
+        )
+
+        self.assertIs(result, tree)
+        self.assertEqual(calls, [helpers.REQUEST_TIMEOUT_SECONDS] * 3)
+        self.assertEqual(sleeps, [helpers.RETRY_DELAY_SECONDS, helpers.RETRY_DELAY_SECONDS])
+
+    def test_get_xtree_raises_clear_error_after_all_retries(self):
+        sleeps = []
+
+        def fake_urlopen(_request, timeout):
+            raise OSError("network down")
+
+        helpers.etree.HTMLParser = lambda: "parser"
+        helpers.etree.parse = lambda webpage, parser: object()
+
+        with self.assertRaisesRegex(RuntimeError, "Failed to fetch RAE page for 'casa'"):
+            get_xtree(
+                "https://example.test/{}/?f={}",
+                "casa",
+                urlopen_fn=fake_urlopen,
+                sleep_fn=sleeps.append,
+            )
+
+        self.assertEqual(len(sleeps), helpers.RETRY_ATTEMPTS - 1)
 
 
 if __name__ == "__main__":

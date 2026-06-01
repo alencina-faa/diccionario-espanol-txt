@@ -155,6 +155,7 @@ Recent maintenance work:
 1. src/post_process.py and src/rae_downloader.py are now importable and easier to test.
 2. src/helpers.py now separates pure extraction logic from HTTP request orchestration.
 3. Dead CLI flags and unused imports were removed from the main scripts.
+4. HTTP fetching now has explicit retry constants, injectable helpers for testing, and a clear terminal error when retries are exhausted.
 
 ## Limitations
 
@@ -162,6 +163,18 @@ Recent maintenance work:
 2. The full download is network-bound and may take hours.
 3. Some optional code paths in the project are still marked as outdated or TODO.
 4. This repository scrapes public results pages; review RAE terms and operational limits before running large batches.
+
+## Network behavior
+
+The downloader retries failed page fetches in src/helpers.py with fixed defaults.
+
+Current defaults:
+
+1. 10 attempts per page.
+2. 2-second request timeout per HTTP call.
+3. 10-second delay between retries.
+
+If all retries fail, the scraper now raises a clear RuntimeError instead of failing later with a less specific NoneType error.
 
 ## Additional utilities
 

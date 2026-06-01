@@ -16,6 +16,7 @@ Covered behavior:
 4. Invariable forms.
 5. Consonant-based pluralization rules.
 6. Extraction helpers for conjugation, page headers, and plural confirmation.
+7. HTTP request building and retry behavior in get_xtree().
 
 ### test_run_full_download.py
 
