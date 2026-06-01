@@ -60,6 +60,25 @@ class RunFullDownloadTests(unittest.TestCase):
             with self.assertRaises(SystemExit):
                 run_full_download.main()
 
+    def test_quiet_propagates_to_child_commands(self):
+        recorded = []
+
+        def fake_run(command, cwd=None, check=None):
+            recorded.append((command, cwd, check))
+
+        argv = ["run_full_download.py", "--from-ix", "0", "--to-ix", "0", "--termina", "--quiet"]
+        with patch.object(sys, "argv", argv):
+            with patch("subprocess.run", side_effect=fake_run):
+                with patch("builtins.print") as mock_print:
+                    exit_code = run_full_download.main()
+
+        self.assertEqual(exit_code, 0)
+        self.assertEqual(len(recorded), 3)
+        self.assertIn("--quiet", recorded[0][0])
+        self.assertIn("--quiet", recorded[1][0])
+        self.assertIn("--quiet", recorded[2][0])
+        mock_print.assert_not_called()
+
 
 if __name__ == "__main__":
     unittest.main()

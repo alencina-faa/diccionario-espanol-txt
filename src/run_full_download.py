@@ -11,8 +11,13 @@ from pathlib import Path
 TOTAL_LETTERS = 33
 
 
-def run_command(command: list[str], cwd: Path) -> None:
-    print("$", " ".join(command))
+def default_log(message: str) -> None:
+    print(message)
+
+
+def run_command(command: list[str], cwd: Path, log_fn=default_log) -> None:
+    if log_fn is not None:
+        log_fn("$ " + " ".join(command))
     subprocess.run(command, cwd=str(cwd), check=True)
 
 
@@ -49,6 +54,11 @@ def main() -> int:
         action="store_true",
         help="Also run termina mode and include it in post-processing",
     )
+    parser.add_argument(
+        "--quiet",
+        action="store_true",
+        help="Reduce console output",
+    )
 
     args = parser.parse_args()
 
@@ -60,11 +70,13 @@ def main() -> int:
     repo_root = Path(__file__).resolve().parents[1]
     src_dir = repo_root / "src"
     python_cmd = sys.executable
+    log_fn = None if args.quiet else default_log
 
-    print(
-        f"Running downloader for indexes {args.from_ix}..{args.to_ix} "
-        f"with outfile '{args.outfile}'"
-    )
+    if log_fn is not None:
+        log_fn(
+            f"Running downloader for indexes {args.from_ix}..{args.to_ix} "
+            f"with outfile '{args.outfile}'"
+        )
 
     for ix in range(args.from_ix, args.to_ix + 1):
         cmd = [
@@ -75,14 +87,17 @@ def main() -> int:
             "--outfile",
             args.outfile,
         ]
-        run_command(cmd, cwd=repo_root)
+        if args.quiet:
+            cmd.append("--quiet")
+        run_command(cmd, cwd=repo_root, log_fn=log_fn)
 
     if args.termina:
         termina_base = f"{args.outfile}_termina"
-        print(
-            f"Running termina downloader for indexes {args.from_ix}..{args.to_ix} "
-            f"with outfile '{termina_base}'"
-        )
+        if log_fn is not None:
+            log_fn(
+                f"Running termina downloader for indexes {args.from_ix}..{args.to_ix} "
+                f"with outfile '{termina_base}'"
+            )
         for ix in range(args.from_ix, args.to_ix + 1):
             cmd = [
                 python_cmd,
@@ -93,7 +108,9 @@ def main() -> int:
                 "--outfile",
                 termina_base,
             ]
-            run_command(cmd, cwd=repo_root)
+            if args.quiet:
+                cmd.append("--quiet")
+            run_command(cmd, cwd=repo_root, log_fn=log_fn)
 
     post_cmd = [
         python_cmd,
@@ -105,11 +122,15 @@ def main() -> int:
     ]
     if args.termina:
         post_cmd.append("--termina")
+    if args.quiet:
+        post_cmd.append("--quiet")
 
-    print("Running post-process step")
-    run_command(post_cmd, cwd=repo_root)
+    if log_fn is not None:
+        log_fn("Running post-process step")
+    run_command(post_cmd, cwd=repo_root, log_fn=log_fn)
 
-    print(f"Done. Generated: {args.outputfile}.txt")
+    if log_fn is not None:
+        log_fn(f"Done. Generated: {args.outputfile}.txt")
     return 0
 
 

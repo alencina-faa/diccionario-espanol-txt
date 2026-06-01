@@ -49,6 +49,12 @@ Example:
 python src/rae_downloader.py --ix 0
 ```
 
+Less verbose output:
+
+```bash
+python src/rae_downloader.py --ix 0 --quiet
+```
+
 Important details:
 
 1. One execution only processes one letter index.
@@ -70,6 +76,12 @@ If you also downloaded the termina dataset:
 
 ```bash
 python src/post_process.py --inputfile data/raw/allwords --outputfile data/allwords --termina
+```
+
+Less verbose output:
+
+```bash
+python src/post_process.py --inputfile data/raw/allwords --outputfile data/allwords --quiet
 ```
 
 This generates:
@@ -97,6 +109,12 @@ With termina mode enabled:
 
 ```bash
 python src/run_full_download.py --termina
+```
+
+Quiet mode for long runs:
+
+```bash
+python src/run_full_download.py --termina --quiet
 ```
 
 Useful options:
@@ -156,6 +174,7 @@ Recent maintenance work:
 2. src/helpers.py now separates pure extraction logic from HTTP request orchestration.
 3. Dead CLI flags and unused imports were removed from the main scripts.
 4. HTTP fetching now has explicit retry constants, injectable helpers for testing, and a clear terminal error when retries are exhausted.
+5. A --quiet mode is available in the main scripts to reduce console noise during long downloads.
 
 ## Limitations
 
@@ -175,6 +194,8 @@ Current defaults:
 3. 10-second delay between retries.
 
 If all retries fail, the scraper now raises a clear RuntimeError instead of failing later with a less specific NoneType error.
+
+Use --quiet in the CLI entry points if you want to suppress most retry and progress logging during long runs.
 
 ## Additional utilities
 

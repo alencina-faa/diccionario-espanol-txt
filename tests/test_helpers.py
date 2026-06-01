@@ -2,6 +2,7 @@ import sys
 import types
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 
 SRC_DIR = Path(__file__).resolve().parents[1] / "src"
@@ -129,6 +130,27 @@ class HelperNetworkTests(unittest.TestCase):
             )
 
         self.assertEqual(len(sleeps), helpers.RETRY_ATTEMPTS - 1)
+
+    def test_get_xtree_quiet_suppresses_retry_logging(self):
+        sleeps = []
+
+        def fake_urlopen(_request, timeout):
+            raise OSError("silent failure")
+
+        helpers.etree.HTMLParser = lambda: "parser"
+        helpers.etree.parse = lambda webpage, parser: object()
+
+        with patch("builtins.print") as mock_print:
+            with self.assertRaises(RuntimeError):
+                get_xtree(
+                    "https://example.test/{}/?f={}",
+                    "casa",
+                    urlopen_fn=fake_urlopen,
+                    sleep_fn=sleeps.append,
+                    log_fn=None,
+                )
+
+        mock_print.assert_not_called()
 
 
 if __name__ == "__main__":

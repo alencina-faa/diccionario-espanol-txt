@@ -40,7 +40,7 @@ class RaeDownloaderTests(unittest.TestCase):
     def test_main_writes_pickle_for_single_letter_without_pages(self):
         calls = []
 
-        def fake_get_xtree(url, param, offset=0):
+        def fake_get_xtree(url, param, offset=0, log_fn=None):
             calls.append((url, param, offset))
             return FakeTree(
                 {
@@ -52,7 +52,7 @@ class RaeDownloaderTests(unittest.TestCase):
 
         lucky_calls = []
 
-        def fake_try_lucky(word, dict_dump):
+        def fake_try_lucky(word, dict_dump, log_fn=None):
             lucky_calls.append(word)
             dict_dump[word] = word
 
@@ -76,7 +76,7 @@ class RaeDownloaderTests(unittest.TestCase):
     def test_termina_uses_termina_url_list(self):
         calls = []
 
-        def fake_get_xtree(url, param, offset=0):
+        def fake_get_xtree(url, param, offset=0, log_fn=None):
             calls.append((url, param, offset))
             return FakeTree(
                 {
@@ -86,7 +86,7 @@ class RaeDownloaderTests(unittest.TestCase):
                 }
             )
 
-        rae_downloader = self.import_module_with_helpers(fake_get_xtree, lambda word, data: None)
+        rae_downloader = self.import_module_with_helpers(fake_get_xtree, lambda word, data, log_fn=None: None)
 
         with tempfile.TemporaryDirectory() as temp_dir:
             outfile = str(Path(temp_dir) / "allwords")
@@ -94,6 +94,29 @@ class RaeDownloaderTests(unittest.TestCase):
 
         self.assertEqual(exit_code, 0)
         self.assertEqual(calls, [("termina://{}?f={}", "a", 0)])
+
+    def test_quiet_mode_suppresses_downloader_prints(self):
+        def fake_get_xtree(url, param, offset=0, log_fn=None):
+            return FakeTree(
+                {
+                    '//*/*[@class="c-pagination"]/*/text()': [],
+                    '//*/article/h3/a/text()': ["abeja"],
+                    '//*/article/h3/a/i/text()': [],
+                }
+            )
+
+        def fake_try_lucky(word, dict_dump, log_fn=None):
+            dict_dump[word] = word
+
+        rae_downloader = self.import_module_with_helpers(fake_get_xtree, fake_try_lucky)
+
+        with tempfile.TemporaryDirectory() as temp_dir:
+            outfile = str(Path(temp_dir) / "allwords")
+            with patch("builtins.print") as mock_print:
+                exit_code = rae_downloader.main(["--ix", "0", "--outfile", outfile, "--quiet"])
+
+        self.assertEqual(exit_code, 0)
+        mock_print.assert_not_called()
 
 
 if __name__ == "__main__":

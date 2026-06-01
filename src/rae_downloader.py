@@ -8,10 +8,15 @@ import pickle
 from helpers import get_xtree, try_me_siento_con_suerte, url_list_empieza, url_list_termina
 
 
+def default_log(message):
+    print(message)
+
+
 def parse_args(argv=None):
     parser = argparse.ArgumentParser(description='RAE Downloader.')
     parser.add_argument('--ix', metavar='ix', type=int, required=True, help='Start with this letter index')
     parser.add_argument('--termina', dest='termina', action='store_true')
+    parser.add_argument('--quiet', action='store_true', help='Reduce console output')
     parser.add_argument('--outfile', metavar='outfile no extension', type=str, default="data/raw/allwords")
     return parser.parse_args(argv)
 
@@ -27,19 +32,21 @@ def get_url_list(termina):
 
 NITEMS = 20
 
-def procesa(palabras, dict_dump):
+def procesa(palabras, dict_dump, log_fn=default_log):
     # Se repiten palabras. Cuando por ejemplo aba tiene más de 30 y se exapande
     # abaa, abab, etc... las primeras palabras no aparecen: aba
     numpal = len(palabras)
     for ix, pal in enumerate(palabras):        
         if pal.startswith(","):
-            print("Tratada antes", pal)
+            if log_fn is not None:
+                log_fn(f"Tratada antes {pal}")
             continue
 
         if ix+1 < numpal and palabras[ix+1].startswith(","):
             pal = pal + palabras[ix+1]
 
-        print(pal)
+        if log_fn is not None:
+            log_fn(pal)
         dict_dump[pal] = pal
         
         """
@@ -65,7 +72,9 @@ def procesa(palabras, dict_dump):
 def run_download(args):
     letras_count = len(letras)
     start = letras[args.ix]
-    print(f"Running with {args.ix}/{letras_count}: {start}")
+    log_fn = None if args.quiet else default_log
+    if log_fn is not None:
+        log_fn(f"Running with {args.ix}/{letras_count}: {start}")
     start_with = [start]
     dict_dump = {}
     url_list = get_url_list(args.termina)
@@ -76,34 +85,38 @@ def run_download(args):
         if(palabra_start_with in ['app', 'docs', 'js']): # RAE servers do not like this
             continue
 
-        try_me_siento_con_suerte(palabra_start_with, dict_dump)
+        try_me_siento_con_suerte(palabra_start_with, dict_dump, log_fn=log_fn)
 
-        tree = get_xtree(url_list, palabra_start_with)
+        tree = get_xtree(url_list, palabra_start_with, log_fn=log_fn)
         pags = tree.xpath('//*/*[@class="c-pagination"]/*/text()')
 
         res = tree.xpath('//*/article/h3/a/text()')
-        procesa(res, dict_dump)
+        procesa(res, dict_dump, log_fn=log_fn)
 
         if pags:
             npags = max([int(x,0) for x in pags if x.isdigit()])
-            print("Hay páginas")
+            if log_fn is not None:
+                log_fn("Hay páginas")
             for page in range(npags):
                 if page == 0:
                     continue
-                print("Página: " + str(page))
+                if log_fn is not None:
+                    log_fn("Página: " + str(page))
                 fparam = page*NITEMS
 
-                tree = get_xtree(url_list, palabra_start_with, fparam)
+                tree = get_xtree(url_list, palabra_start_with, fparam, log_fn=log_fn)
                 res = tree.xpath('//*/article/h3/a/text()')
                 res = res + tree.xpath('//*/article/h3/a/i/text()')
-                procesa(res, dict_dump)
+                procesa(res, dict_dump, log_fn=log_fn)
 
         else:
-            print("No hay páginas")
+            if log_fn is not None:
+                log_fn("No hay páginas")
 
         if pags:
-            print("!" * 80)
-            print("EXAPEND: " + palabra_start_with)
+            if log_fn is not None:
+                log_fn("!" * 80)
+                log_fn("EXAPEND: " + palabra_start_with)
             expand = [palabra_start_with + l for l in letras]
             start_with = expand + start_with
 

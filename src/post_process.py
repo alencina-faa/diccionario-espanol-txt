@@ -5,10 +5,15 @@ from pathlib import Path
 import pyuca
 
 
+def default_log(message):
+    print(message)
+
+
 def parse_args(argv=None):
     parser = argparse.ArgumentParser(description='RAE Process data.')
     parser.add_argument('--inputfile', metavar='outfile no extension', type=str, default="data/raw/allwords")
     parser.add_argument('--termina', action='store_true')
+    parser.add_argument('--quiet', action='store_true', help='Reduce console output')
     parser.add_argument('--outputfile', metavar='outputfile', type=str, default="data/allwords")
     return parser.parse_args(argv)
 
@@ -58,6 +63,8 @@ def main(argv=None):
     termina_inputfile = get_termina_inputfile(args)
     collator_path = str(Path("src") / "allkeys.txt")
     process_words(args.inputfile, args.outputfile, termina_inputfile, collator_path)
+    if not args.quiet:
+        default_log(f"Generated: {args.outputfile}.txt")
     return 0
 
 if __name__ == "__main__":

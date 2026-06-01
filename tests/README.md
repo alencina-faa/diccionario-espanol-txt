@@ -28,6 +28,7 @@ Covered behavior:
 2. Extra termina pass when requested.
 3. Post-processing invocation.
 4. Validation of invalid index ranges.
+5. Quiet-mode propagation to child commands.
 
 ### test_post_process.py
 
@@ -48,6 +49,7 @@ Covered behavior:
 
 1. Pickle generation for a single letter.
 2. URL list selection for empieza and termina modes.
+3. Quiet mode without console output.
 
 ## Run the tests
 

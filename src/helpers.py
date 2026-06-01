@@ -15,6 +15,10 @@ REQUEST_TIMEOUT_SECONDS = 2
 RETRY_ATTEMPTS = 10
 RETRY_DELAY_SECONDS = 10
 
+
+def default_log(message):
+    print(message)
+
 """
 Usamos title por que el contenido en determinadas situaciones cambia:
 https://dle.rae.es/abollado?m=31
@@ -32,7 +36,7 @@ def build_request(url, param, offset=0):
     return Request(url.format(quote(param), offset), headers={'User-Agent': UA})
 
 
-def get_xtree(url, param, offset=0, urlopen_fn=urlopen, sleep_fn=time.sleep):
+def get_xtree(url, param, offset=0, urlopen_fn=urlopen, sleep_fn=time.sleep, log_fn=default_log):
     tree = None
     attempt = RETRY_ATTEMPTS
     last_error = None
@@ -45,7 +49,8 @@ def get_xtree(url, param, offset=0, urlopen_fn=urlopen, sleep_fn=time.sleep):
         except Exception as e:
             last_error = e
             attempt -= 1
-            print(str(e))
+            if log_fn is not None:
+                log_fn(str(e))
             if attempt > 0:
                 sleep_fn(RETRY_DELAY_SECONDS)
 
@@ -78,32 +83,39 @@ def is_confirmed_plural(tree, plural_candidate):
     return len(posible_plural) > 0 and plural_candidate in posible_plural[0]
 
 
-def try_conjugacion(palabra, dict_dump):
-    print("Intentamos conjugar " + palabra)
-    tree = get_xtree(url_detail, palabra)
+def try_conjugacion(palabra, dict_dump, log_fn=default_log):
+    if log_fn is not None:
+        log_fn("Intentamos conjugar " + palabra)
+    tree = get_xtree(url_detail, palabra, log_fn=log_fn)
     contains, contains_conjugacion = has_conjugation(tree)
     if contains:
-        print("^" * 80)
-        print(contains_conjugacion)
+        if log_fn is not None:
+            log_fn("^" * 80)
+            log_fn(str(contains_conjugacion))
         for conj in extract_conjugacion_forms(tree):
-            print(conj)
+            if log_fn is not None:
+                log_fn(conj)
             dict_dump[conj] = conj
 
 
-def try_me_siento_con_suerte(palabra, dict_dump):
+def try_me_siento_con_suerte(palabra, dict_dump, log_fn=default_log):
     # RAE por ejemplo al buscar si, devuelve psicolo, psiblabla, etc...
     # esta función prueba la cadena de caracteres en la url, la mayoría dará no pero alguna dará sí. Por ejemplo sí.
     # Ahora mismo sí, sí que aparece por la inclusión de las tildes en el lista inicial.
     # pero puede haber situaciones de palabras que no estén en la lista de resultado de búsqueda y que sean palabras.
-    print("Intentamos suerte " + palabra)
-    tree = get_xtree(url_detail, palabra)
+    if log_fn is not None:
+        log_fn("Intentamos suerte " + palabra)
+    tree = get_xtree(url_detail, palabra, log_fn=log_fn)
     contains, posible_palabra = has_page_header_word(tree)
-    print(posible_palabra)
+    if log_fn is not None:
+        log_fn(str(posible_palabra))
     if contains:
-        print("Aceptamos:" + palabra)
+        if log_fn is not None:
+            log_fn("Aceptamos:" + palabra)
         dict_dump[palabra] = palabra
     else:
-        print("Denegamos:" + palabra)
+        if log_fn is not None:
+            log_fn("Denegamos:" + palabra)
 
 
 """
@@ -156,15 +168,18 @@ def formar_plural(palabra):
 # print(f"Formas posibles del plural de '{palabra}': {formar_plural(palabra)}")
 
 
-def try_plural(palabra, dict_dump):
-    print("Intentamos plural " + palabra)
+def try_plural(palabra, dict_dump, log_fn=default_log):
+    if log_fn is not None:
+        log_fn("Intentamos plural " + palabra)
     plural = formar_plural(palabra)
     for pl in plural:
-        tree = get_xtree(url_detail, pl)
+        tree = get_xtree(url_detail, pl, log_fn=log_fn)
         if is_confirmed_plural(tree, pl):
-            print("Aceptamos:" + pl)
+            if log_fn is not None:
+                log_fn("Aceptamos:" + pl)
             dict_dump[pl] = pl
         else:
             # Puede ser una palabra: a -> plural as, es una palabra.
             # Aquí la denegamos. La recogeremos como palabra en otra parte del script
-            print("Denegamos:" + pl)
+            if log_fn is not None:
+                log_fn("Denegamos:" + pl)
