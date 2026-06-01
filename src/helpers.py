@@ -1,6 +1,4 @@
 import time
-import argparse
-import pickle
 
 from lxml import etree
 from urllib.parse   import quote
@@ -27,15 +25,17 @@ to_remove_from_title='Ir a la entrada '
 skip = len(to_remove_from_title)
 
 
+def build_request(url, param, offset=0):
+    return Request(url.format(quote(param), offset), headers={'User-Agent': UA})
+
+
 def get_xtree(url, param, offset=0):
     tree = None
     attempt = 10
-    while attempt > 0 and tree == None:
+    while attempt > 0 and tree is None:
         try:
-            req = Request(url.format(quote(param), offset), headers={'User-Agent': UA})
+            req = build_request(url, param, offset)
             webpage = urlopen(req, timeout=2)  # Set the timeout value to 10 seconds
-            # imprimit contenido
-            #print(webpage.read())
             htmlparser = etree.HTMLParser()
             tree = etree.parse(webpage, htmlparser)
         except Exception as e:
@@ -46,20 +46,37 @@ def get_xtree(url, param, offset=0):
     return tree
 
 
+def extract_conjugacion_forms(tree):
+    conjugacion = tree.xpath('//div[@id="conjugacion"]//td//text()')
+    conjugacion_clean = ' '.join(conjugacion).replace(', ', ' ').replace(' / ', ' ').split(' ')
+    return [conj for conj in conjugacion_clean if conj != '']
+
+
+def has_conjugation(tree):
+    contains_conjugacion = tree.xpath('//*[@id="resultados"]/*/a[@class="e2"]/@title')
+    return len(contains_conjugacion) > 0, contains_conjugacion
+
+
+def has_page_header_word(tree):
+    posible_palabra = tree.xpath('//*/h1[@class="c-page-header__title"]/text()')
+    return len(posible_palabra) > 0, posible_palabra
+
+
+def is_confirmed_plural(tree, plural_candidate):
+    posible_plural = tree.xpath('//*[@id="resultados"]/div[@class="otras"]/p/text()')
+    return len(posible_plural) > 0 and plural_candidate in posible_plural[0]
+
+
 def try_conjugacion(palabra, dict_dump):
     print("Intentamos conjugar " + palabra)
     tree = get_xtree(url_detail, palabra)
-    contains_conjugacion = tree.xpath('//*[@id="resultados"]/*/a[@class="e2"]/@title')
-    if len(contains_conjugacion) > 0:
+    contains, contains_conjugacion = has_conjugation(tree)
+    if contains:
         print("^" * 80)
         print(contains_conjugacion)
-        # get all contant in tds
-        conjugacion = tree.xpath('//div[@id="conjugacion"]//td//text()')
-        conjugacion_clean = ' '.join(conjugacion).replace(', ', ' ').replace(' / ', ' ').split(' ')
-        for conj in conjugacion_clean:
-            if(conj!=''):
-                print(conj)
-                dict_dump[conj] = conj
+        for conj in extract_conjugacion_forms(tree):
+            print(conj)
+            dict_dump[conj] = conj
 
 
 def try_me_siento_con_suerte(palabra, dict_dump):
@@ -69,9 +86,9 @@ def try_me_siento_con_suerte(palabra, dict_dump):
     # pero puede haber situaciones de palabras que no estén en la lista de resultado de búsqueda y que sean palabras.
     print("Intentamos suerte " + palabra)
     tree = get_xtree(url_detail, palabra)
-    posible_palabra = tree.xpath('//*/h1[@class="c-page-header__title"]/text()')
+    contains, posible_palabra = has_page_header_word(tree)
     print(posible_palabra)
-    if len(posible_palabra) > 0:
+    if contains:
         print("Aceptamos:" + palabra)
         dict_dump[palabra] = palabra
     else:
@@ -133,8 +150,7 @@ def try_plural(palabra, dict_dump):
     plural = formar_plural(palabra)
     for pl in plural:
         tree = get_xtree(url_detail, pl)
-        posible_plural = tree.xpath('//*[@id="resultados"]/div[@class="otras"]/p/text()')
-        if len(posible_plural) > 0 and pl in posible_plural[0]:
+        if is_confirmed_plural(tree, pl):
             print("Aceptamos:" + pl)
             dict_dump[pl] = pl
         else:

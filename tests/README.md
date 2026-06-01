@@ -15,6 +15,7 @@ Covered behavior:
 3. Multiple plural candidates for some tonic endings.
 4. Invariable forms.
 5. Consonant-based pluralization rules.
+6. Extraction helpers for conjugation, page headers, and plural confirmation.
 
 ### test_run_full_download.py
 
@@ -37,6 +38,15 @@ Covered behavior:
 2. Duplicate removal.
 3. Sorted text output generation.
 4. Merge of termina pickle files when --termina is used.
+
+### test_rae_downloader.py
+
+Exercises src/rae_downloader.py without network access by stubbing helpers.
+
+Covered behavior:
+
+1. Pickle generation for a single letter.
+2. URL list selection for empieza and termina modes.
 
 ## Run the tests
 

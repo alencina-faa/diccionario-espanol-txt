@@ -145,9 +145,16 @@ python -m unittest discover -s tests -v
 Current test coverage includes:
 
 1. Plural generation rules in src/helpers.py.
-2. Command orchestration in src/run_full_download.py.
-3. Post-processing with temporary pickle fixtures.
-4. Downloader orchestration without network access.
+2. Helper extraction logic in src/helpers.py.
+3. Command orchestration in src/run_full_download.py.
+4. Post-processing with temporary pickle fixtures.
+5. Downloader orchestration without network access.
+
+Recent maintenance work:
+
+1. src/post_process.py and src/rae_downloader.py are now importable and easier to test.
+2. src/helpers.py now separates pure extraction logic from HTTP request orchestration.
+3. Dead CLI flags and unused imports were removed from the main scripts.
 
 ## Limitations
 
