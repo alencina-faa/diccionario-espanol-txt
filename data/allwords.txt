@@ -93,6 +93,7 @@ a priori
 a sensu contrario
 a simili
 a-
+ab aeterno
 ab initio
 ab intestato
 ab irato
@@ -581,7 +582,6 @@ absidal
 ábside
 absidiolo
 absintio
-absit
 absolución
 absolutamente
 absolutez
@@ -1767,7 +1767,13 @@ acuto, ta
 acuyo
 ad
 ad calendas graecas
+ad cautelam
 ad efesios
+ad hoc
+ad hominem
+ad honorem
+ad infinitum
+ad interim
 ad limina
 ad tempus
 ad-
@@ -4159,7 +4165,6 @@ aldúcar
 ale
 alea
 aleá
-alea iacta est
 aleación
 alear
 aleas
@@ -4242,6 +4247,8 @@ alélico, ca
 alelo
 alelomórfico, ca
 alelomorfo, fa
+alelopatía
+alelopático, ca
 aleluya
 alema
 alemán, na
@@ -4795,7 +4802,6 @@ allegador, ra
 allegamiento
 alleganza
 allegar
-allegretto
 allegro
 Allen
 allende
@@ -5634,7 +5640,6 @@ amatal
 amatar
 amate
 amatera
-amateur
 amateurismo
 amatista
 amatiste
@@ -5761,6 +5766,7 @@ ameno, na
 amenorar
 amenorgar
 amenorrea
+amensalismo
 amentáceo, a
 amente
 amento
@@ -7074,6 +7080,7 @@ antibaquio
 antibelicista
 antibélico, ca
 antibiograma
+antibiosis
 antibiótico, ca
 antibloqueo
 antibritánico, ca
@@ -8404,7 +8411,6 @@ apuró
 apurón, na
 apurrir
 apurruñar
-aquaplaning
 aque
 aquea
 aquebrazarse
@@ -9575,7 +9581,7 @@ arsenical
 arsénico
 arseniuro
 arsolla
-art déco
+art nouveau
 arta
 ártabro, bra
 artado
@@ -11121,6 +11127,8 @@ autopase
 autopiloto
 autopista
 autoplastia
+autopregunta
+autopreguntarse
 autopropulsado, da
 autopropulsión
 autoprotección
@@ -11169,6 +11177,7 @@ autotransfusión
 autotrasplante
 autotrófico, ca
 autótrofo, fa
+autovacuna
 autovía
 autrigón, na
 autumnal
@@ -12997,7 +13006,6 @@ be
 beaciense
 beamontés, sa
 bearnés, sa
-beat
 beatería
 beaterio
 beatificación
@@ -13008,7 +13016,6 @@ beatilla
 beatísimo
 beatitud
 beatlemanía
-beatnik
 beato, ta
 bebe
 bebé
@@ -13254,7 +13261,6 @@ berbiquí
 berceo
 bercería
 bercero, ra
-berceuse
 bercial
 berciano, na
 bereber
@@ -13486,7 +13492,7 @@ bicarbonato
 bicatenario, ria
 bicefalia
 bicéfalo, la
-bicentenario
+bicentenario, ria
 bíceps
 bicerra
 bicha
@@ -13587,8 +13593,6 @@ bifronte
 bifurcación
 bifurcado, da
 bifurcarse
-big bang
-big data
 biga
 bigamia
 bígamo, ma
@@ -13689,6 +13693,7 @@ binza
 bio
 bío
 bio-, -bio, bia
+biobanco
 biobibliografía
 biobibliográfico, ca
 biocapacidad
@@ -13772,6 +13777,8 @@ biotecnológico, ca
 biotecnólogo, ga
 bioterapia
 bioterio
+bioterrorismo
+bioterrorista
 biótico, ca
 biotipo
 biotipología
@@ -13798,7 +13805,6 @@ bipolarización
 bipolarizar
 bipontino, na
 bira
-birdie
 biribís
 biricú
 birimbao
@@ -13966,7 +13972,6 @@ bizquera
 bla
 blablá
 blablablá
-blackjack
 blancal
 blancarte
 blancazo, za
@@ -14121,6 +14126,7 @@ bocabarra
 bocacalle
 bocacaz
 bocacha
+bocachancla
 bocacho, cha
 bocací
 bocada
@@ -14246,6 +14252,7 @@ boicoteo
 boina
 boira
 boiserie
+boîte
 boj
 boja
 bojar
@@ -14783,7 +14790,6 @@ botulismo
 botuto
 bou
 boudoir
-bourbon
 boutade
 boutique
 bovaje
@@ -15468,7 +15474,6 @@ bumbulón
 bumerán
 buna
 bungaló
-bungalow
 buniatal
 buniato
 bunio
@@ -15656,9 +15661,7 @@ buzonear
 buzoneo
 buzonera
 buzos
-bypass
 byroniano, na
-byte
 c
 ca
 caacupeño, ña
@@ -16126,7 +16129,6 @@ cadavera
 cadavérico, ca
 cadaverina
 cadaveroso, sa
-caddie
 cadejo
 cadena
 cadenado
@@ -16995,7 +16997,7 @@ camele
 camelé
 camelete
 camelia
-camélido
+camélido, da
 camelieo, a
 camelina
 camelio
@@ -17509,8 +17511,8 @@ canicular
 caniculario
 cañicultor, ra
 cañicultura
-cánido
 canido, da
+cánido, da
 cañifla
 cañiherla
 cañihua
@@ -18632,7 +18634,6 @@ carotina
 caroto
 carozo
 carpa
-carpaccio
 carpacho
 carpancho
 carpanel
@@ -21118,7 +21119,6 @@ chatarrear
 chatarrería
 chatarrero, ra
 chatear
-chateaubriand
 chatedad
 chatel
 chateo
@@ -21235,7 +21235,6 @@ cheviot
 cheyene
 chia
 chía
-chianti
 Chiapa
 chiapaneco, ca
 chiar
@@ -22578,6 +22577,7 @@ cinco
 cincoenrama
 cinconegritos
 cincs
+cincuecentista
 cincuenta
 cincuentaina
 cincuentañal
@@ -23207,7 +23207,6 @@ coacción
 coaccionar
 coacervación
 coacervar
-coach
 coacreedor, ra
 coactividad
 coactivo, va
@@ -23881,7 +23880,6 @@ collación
 collada
 colladía
 collado
-collage
 collalba
 collar
 collareja
@@ -24170,6 +24168,7 @@ comendatorio, ria
 comendero
 comensal
 comensalía
+comensalismo
 comentador, ra
 comentar
 comentario
@@ -25926,8 +25925,8 @@ contraridad
 contrariedad
 contrario, ria
 contrarraya
-contrarreembolso
 contrarreforma
+contrarreformista
 contrarregistro
 contrarreguera
 contrarreloj
@@ -26164,7 +26163,6 @@ conyugicida
 conyugicidio
 cooficial
 cooficialidad
-cookie
 cooperación
 cooperador, ra
 cooperante
@@ -26665,7 +26663,6 @@ corporativamente
 corporativismo
 corporativista
 corporativo, va
-corpore insepulto
 corporeidad
 corporeización
 corporeizar
@@ -27211,7 +27208,6 @@ coturnicultura
 coturno
 cotuza
 coulis
-coulomb
 country
 covacha
 covachuela
@@ -27256,8 +27252,6 @@ coz
 cozolmeca
 crabrón
 crac
-crack
-cracker
 cracoviano, na
 crampón
 cramponado, da
@@ -27348,6 +27342,7 @@ cremallera
 cremar
 crematístico, ca
 crematorio, ria
+crème
 cremento
 cremómetro
 cremonés, sa
@@ -27680,6 +27675,7 @@ crotón
 crotoniata
 crotorar
 crotoreo
+crowdfunding
 croza
 cruasán
 cruce
@@ -27710,7 +27706,11 @@ crudelísimo, ma
 crudeza
 crudillo
 crudío, a
+crudismo
+crudista
 crudité
+crudivorismo
+crudívoro, ra
 crudo, da
 cruel
 crueldad
@@ -28500,6 +28500,7 @@ cuotidiano, na
 cupana
 cupe
 cupé
+cuperosis
 cupido
 cupitel
 cuplé
@@ -28755,7 +28756,6 @@ cuzma
 cuzo, za
 cuzqueño, ña
 cuzul
-czarda
 d
 da
 da capo
@@ -29026,6 +29026,7 @@ decaí
 decaíble
 decaído, da
 decaimiento
+decalaje
 decalcificación
 decalcificar
 decalitro
@@ -29207,7 +29208,6 @@ decrepitación
 decrepitar
 decrépito, ta
 decrepitud
-decrescendo
 decretación
 decretal
 decretalista
@@ -29578,6 +29578,7 @@ demergido, da
 demeritar
 demérito
 demeritorio, ria
+demersal
 demientra
 demigar
 demisión
@@ -29756,7 +29757,6 @@ denunciar
 denunciatorio, ria
 denuncio
 deo gracias
-Deo volente
 deodara
 deóntico, ca
 deontología
@@ -32685,6 +32685,8 @@ desranchar
 desraspado
 desraspar
 desratización
+desratizador, ra
+desratizante
 desratizar
 desrazonable
 desreglar
@@ -33062,7 +33064,6 @@ deuda
 deudo, da
 deudor, ra
 deudoso, sa
-deus ex machina
 deuteragonista
 deuterio
 deuterón
@@ -34039,6 +34040,7 @@ disquetera
 disquisición
 disrupción
 disruptivo, va
+disruptor, ra
 dista
 distá
 distal
@@ -34654,6 +34656,7 @@ dropacismo
 drope
 drosera
 droseráceo, a
+drugstore
 druida
 druídico, ca
 druidismo
@@ -34844,7 +34847,6 @@ DVD
 e
 e-
 ea
-eagle
 ear
 easonense
 ebanista
@@ -37407,6 +37409,8 @@ engazador, ra
 engazamiento
 engazar
 engazo
+engelamiento
+engelante
 engeñar
 engendrable
 engendración
@@ -38176,6 +38180,7 @@ entente
 entenzón
 enteo
 enteógeno, na
+enter
 entera
 enterá
 enterado, da
@@ -41483,6 +41488,7 @@ etileno
 etílico, ca
 etilismo
 etilo
+etilómetro
 étimo
 etimología
 etimológicamente
@@ -41594,6 +41600,9 @@ euroescepticismo
 euroescéptico, ca
 euroesclerosis
 eurofán
+eurofobia
+eurofóbico, ca
+eurófobo, ba
 Europa
 europarlamentario, ria
 europeidad
@@ -41709,8 +41718,9 @@ evolutivamente
 evolutivo, va
 evónimo
 ex
-ex abrupto
+ex aequo
 ex cátedra
+ex cathedra
 ex profeso
 ex-
 exa
@@ -42857,6 +42867,7 @@ farisaico, ca
 farisaísmo
 fariseísmo
 fariseo, a
+farlopa
 farmaceuta
 farmacéutico, ca
 farmacia
@@ -43835,7 +43846,6 @@ fistuloso, sa
 fisura
 fisurar
 fita
-fitness
 fito
 fito-, -fito, ta
 fitocromático, ca
@@ -44323,7 +44333,6 @@ fontano, na
 fontanoso, sa
 fontegí
 fontículo
-footing
 foque
 fora
 forado, da
@@ -44601,6 +44610,7 @@ fotomontaje
 fotomultiplicador, ra
 fotón
 fotónico, ca
+fotonoticia
 fotonovela
 fotoperiódico, ca
 fotoperiodismo
@@ -46283,7 +46293,6 @@ gauchesco, ca
 gaucho, cha
 gaudeamus
 gaudón
-gauss
 Gauss
 gavanza
 gavanzo
@@ -46672,7 +46681,6 @@ giboso, sa
 gibraltareño, ña
 giga
 giga-
-gigabyte
 gigante, ta
 giganteo, a
 gigantesco, ca
@@ -46712,6 +46720,7 @@ gimoteador, ra
 gimotear
 gimoteo
 gin
+gin-fizz
 gin-tonic
 ginandra
 gincana
@@ -46738,7 +46747,6 @@ ginkgo
 ginovés, sa
 ginseng
 giobertita
-gipsófila
 gipsófilo, la
 gira
 girá
@@ -46895,6 +46903,7 @@ glotonía
 gloxínea
 glucemia
 glucémico, ca
+glucídico, ca
 glúcido
 glucina
 glucinio
@@ -47180,7 +47189,6 @@ gótico, ca
 gotón, na
 gotoso, sa
 gouache
-goulash
 gourmet
 goyesco, ca
 goyo, ya
@@ -47490,6 +47498,7 @@ gravitación
 gravitacional
 gravitar
 gravitatorio, ria
+gravitón
 gravo
 gravó
 gravoso, sa
@@ -48385,7 +48394,6 @@ guja
 gula
 gulag
 gular
-gulasch
 gulay
 gules
 gullán
@@ -48755,6 +48763,7 @@ hartón, na
 hartura
 has
 hasaní
+hashtag
 hasio
 hasta
 hastial
@@ -49265,7 +49274,6 @@ herrumbrar
 herrumbre
 herrumbroso, sa
 herrusca
-hertz
 hérulo, la
 hervencia
 herventar
@@ -50212,7 +50220,6 @@ honroso, sa
 hontana
 hontanal
 hontanar
-hooligan
 hopa
 hopalanda
 hoparse
@@ -50419,7 +50426,6 @@ hotelería
 hotelero, ra
 hotentote, ta
 hoto
-house
 hove
 hoy
 hoya
@@ -51452,8 +51458,8 @@ imputrescible
 imputrible
 in
 ín
-in absentia
 in aeternum
+in albis
 in anima vili
 in articulo mortis
 in fieri
@@ -52363,6 +52369,7 @@ infausto, ta
 infebril
 infección
 infeccionar
+infecciosidad
 infeccioso, sa
 infecir
 infectar
@@ -53405,7 +53412,6 @@ interpolador, ra
 interpolar
 interponer
 interposición
-interposita persona
 interprender
 interpresa
 interpretable
@@ -53778,9 +53784,6 @@ ipseidad
 ipsi
 ipsilateral
 ípsilon
-ipso facto
-ipso iure
-ipso jure
 iqueño, ña
 iquiqueño, ña
 iquiteño, ña
@@ -54085,7 +54088,6 @@ itinerario, ria
 ito
 itrio
 itzaj
-iuris et de iure
 iusnaturalista
 IVA
 ivernar
@@ -54479,7 +54481,6 @@ jazarino, na
 jazmín
 jazmíneo, a
 jazminero
-jazz
 jazzista
 jazzístico, ca
 je
@@ -55480,7 +55481,6 @@ laido, da
 lailán
 lairén
 laísmo
-laissez faire
 laísta
 laja
 lajazo
@@ -55936,7 +55936,6 @@ laudable
 laudablemente
 láudano
 laudar
-laudatio
 laudatorio, ria
 laude
 laudemio
@@ -56042,6 +56041,7 @@ lazdrar
 lazo
 lazrar
 lazulita
+lazurita
 le
 lea
 leal
@@ -56710,7 +56710,6 @@ liebratón
 liebre
 liebrecilla
 liechtensteiniano, na
-lied
 liego, ga
 liencillo
 liendra
@@ -57417,6 +57416,7 @@ logical
 lógicamente
 logicismo
 lógico, ca
+login
 logis
 logista
 logístico, ca
@@ -57437,6 +57437,7 @@ logrería
 logrero, ra
 logro
 logroñés, sa
+loguearse
 loguer
 loguero
 loica
@@ -57525,6 +57526,7 @@ lontananza
 loo
 loó
 look
+looping
 loor
 lopesco, ca
 López
@@ -57787,6 +57789,7 @@ lunarejo, ja
 lunario, ria
 lunático, ca
 lunch
+lunchaco
 lunear
 lunecilla
 lunel
@@ -57860,7 +57863,6 @@ luxar
 luxemburgués, sa
 luxómetro
 luz
-lycra
 m
 ma
 mabí
@@ -58342,6 +58344,7 @@ maicería
 maicero, ra
 maicillo
 maído
+mailing
 maílla
 maíllo
 maillot
@@ -59233,6 +59236,7 @@ mantequillero, ra
 mantero, ra
 mantés, sa
 mántica
+mantícora
 mantilla
 mantillo
 mantillón, na
@@ -59441,6 +59445,7 @@ marcí
 marcial
 Marcial
 marcialidad
+marcianada
 marciano, na
 marcido, da
 marcio, cia
@@ -60085,7 +60090,9 @@ matrimonialmente
 matrimoniar
 matrimonio
 matrimoño
+matrioska
 matritense
+matriuska
 matriz
 matrón, na
 matronal
@@ -60139,7 +60146,6 @@ máximo, ma
 máximum
 maxmordón
 maxtate
-maxwell
 maya
 mayá
 mayador, ra
@@ -60435,7 +60441,6 @@ mefistofélico, ca
 mefítico, ca
 mega
 mega-
-megabyte
 megaciclo
 megafonía
 megáfono
@@ -61433,6 +61438,7 @@ microspora
 microsporidio
 microsporofila
 microsurco
+microteatro
 microtomo
 microtúbulo
 microvellosidad
@@ -61519,6 +61525,7 @@ mildiu
 milenario, ria
 milenarismo
 milenarista
+milenial
 milenio
 mileno, na
 milenrama
@@ -61570,6 +61577,7 @@ millaje
 millar
 millarada
 millardo
+millennial
 millo
 millón
 millonada
@@ -62188,6 +62196,7 @@ mogote
 mogrollo
 moguereño, ña
 mohada
+mohair
 moharra
 moharrache
 moharracho
@@ -62958,6 +62967,7 @@ morriña
 morriñoso, sa
 morrión
 morro
+morro, rra
 morrocota
 morrocotudo, da
 morrocoyo
@@ -63152,7 +63162,6 @@ motril
 motriz
 motu proprio
 motudo, da
-mousse
 mové
 movedizo, za
 movedor, ra
@@ -63677,7 +63686,6 @@ mutagénico, ca
 mutágeno
 mutante
 mutar
-mutatis mutandis
 mute
 muté
 mutilación
@@ -63930,6 +63938,7 @@ narcodólar
 narcoguerrilla
 narcoguerrillero, ra
 narcolepsia
+narcoléptico, ca
 narcopolítica
 narcos
 narcosala
@@ -64278,7 +64287,6 @@ nembrar
 neme
 nemeo, a
 némesis
-nemine discrepante
 nemon
 nemoroso, sa
 nen
@@ -64316,6 +64324,7 @@ neokantismo
 neolatín
 neolatino, na
 neolector, ra
+neolengua
 neoleonés, sa
 neoliberal
 neoliberalismo
@@ -64817,6 +64826,7 @@ nomotético, ca
 nomparell
 non
 non bis in idem
+non plus ultra
 non sancto, ta
 nona
 nonada
@@ -65146,6 +65156,7 @@ numulario
 numulita
 numulites
 nunca
+nunchaco
 nunciatura
 nuncio
 nuncupativo
@@ -65550,7 +65561,6 @@ odrina
 odrisio, sia
 oenegé
 oenoteráceo, a
-oersted
 oesnoroeste
 oesnorueste
 oeste
@@ -65693,6 +65703,7 @@ ojota
 ojudo, da
 ojuelos
 okapi
+okey
 okupa
 okupar
 ol
@@ -66637,7 +66648,9 @@ otrora
 otrosí
 otubre
 otumbeño, ña
+outlet
 output
+outsider
 ova
 ová
 ovación
@@ -66693,6 +66706,7 @@ ovoso, sa
 ovovivíparo, ra
 ovulación
 ovular
+ovulatorio, ria
 óvulo
 ox
 oxalato
@@ -66805,6 +66819,7 @@ pacífico, ca
 pacifismo
 pacifista
 pación
+pacman
 paco
 paco, ca
 pacón
@@ -66851,6 +66866,7 @@ pagá
 pagable
 pagad
 pagadero, ra
+pagadiós
 pagado, da
 pagador, ra
 pagaduría
@@ -67967,7 +67983,7 @@ pare
 paré
 parea
 pareá
-pareado
+pareado, da
 parear
 parecencia
 parecer
@@ -68179,7 +68195,6 @@ parta
 parte
 partear
 parteluz
-partenaire
 partencia
 partenogénesis
 partenogenético, ca
@@ -69532,7 +69547,6 @@ pequeño, ña
 pequeñoburgués, sa
 pequín
 per
-per accidens
 per cápita
 per istam
 per-
@@ -70589,6 +70603,7 @@ pielgo
 pielonefritis
 piensador
 pienso
+piercing
 pierde
 piérides
 pierio, ria
@@ -71753,7 +71768,7 @@ plus
 plus minusve
 plus ultra
 pluscafé
-pluscuamperfecto
+pluscuamperfecto, ta
 plusmarca
 plusmarquista
 pluspetición
@@ -72794,7 +72809,6 @@ potrillada
 potrillo, lla
 potro, tra
 potroso, sa
-poule
 povisa
 poya
 poyal
@@ -73088,6 +73102,7 @@ pregunteo
 preguntón, na
 pregustación
 pregustar
+pregusto
 prehelénico, ca
 prehispánico, ca
 prehistoria
@@ -73148,6 +73163,7 @@ premioso, sa
 premir
 premiso, sa
 premitir
+prémium
 premoción
 premolar
 premonición
@@ -73240,6 +73256,7 @@ prepóstero, ra
 prepotencia
 prepotente
 preprandial
+preproducción
 prepuberal
 prepucial
 prepucio
@@ -73597,6 +73614,7 @@ priorazgo
 prioresa
 prioridad
 prioritario, ria
+priorización
 priorizar
 prioste, ta
 prisa
@@ -74439,7 +74457,6 @@ pua
 púa
 puado
 puar
-pub
 pubalgia
 púber
 puberal
@@ -75458,7 +75475,6 @@ rabaniza
 rábano
 rabárbaro
 rabasaire
-rabassa morta
 rabatí
 rabazo
 rabazuz
@@ -75802,6 +75818,7 @@ rámeo, a
 ramera
 ramería
 ramero
+ramésida
 ramial
 ramificación
 ramificar
@@ -75966,7 +75983,6 @@ raquítico, ca
 raquitis
 raquitismo
 rara
-rara avis
 raramente
 rarámuri
 rarear
@@ -76116,7 +76132,6 @@ rasurado
 rasurador, ra
 rasurar
 rata
-rata parte
 ratafía
 ratán
 ratania
@@ -77728,7 +77743,6 @@ remad
 remada
 remador, ra
 remadura
-remake
 remallar
 remamiento
 reman
@@ -78467,6 +78481,8 @@ resignadamente
 resignado, da
 resignar
 resignatario
+resignificación
+resignificar
 resiliencia
 resiliente
 resina
@@ -79610,6 +79626,7 @@ rodela
 rodelero
 rodenal
 rodeno, na
+rodenticida
 rodeo
 rodeón
 rodericense
@@ -80013,7 +80030,6 @@ roturación
 roturador, ra
 roturar
 rouge
-roulotte
 router
 royal
 royega
@@ -80108,6 +80124,7 @@ rueca
 rueda
 ruedapelota
 ruedero
+ruedín
 ruedo
 ruego
 ruejo
@@ -81789,6 +81806,7 @@ seico
 seis
 seisavar
 seisavo, va
+seiscentista
 seiscientos, tas
 seise
 seisén
@@ -81821,6 +81839,7 @@ selenógrafo, fa
 selenosis
 seleque
 seles
+seléucida
 self-service
 selfi
 sellado
@@ -82146,6 +82165,7 @@ sentidor, ra
 sentimental
 sentimentalidad
 sentimentalismo
+sentimentalizar
 sentimentalmente
 sentimentaloide
 sentimiento
@@ -82346,6 +82366,7 @@ serrador, ra
 serraduras
 serragatino, na
 serraja
+serraje
 serrallo
 serranía
 serraniego, ga
@@ -82464,6 +82485,7 @@ setabense
 setabitano, na
 setal
 sete
+setecentista
 setecientos, tas
 setenado, da
 setenar
@@ -82551,18 +82573,13 @@ sexualmente
 sexy
 seychellense
 shakespeariano, na
-sharía
 shaurire
 sheriff
 sherpa
 shock
 short
-show
-show business
-show-woman
 showman
 shuar
-shunte
 si
 sí
 sialismo
@@ -82921,6 +82938,7 @@ sincronismo
 sincronización
 sincronizador, ra
 sincronizar
+síncrono, na
 sincrotrón
 sincuate
 sincuya
@@ -83096,7 +83114,10 @@ siringe
 siringuero
 sirio, ria
 sirirí
+sirla
+sirlar
 sirle
+sirlero, ra
 sirmiense
 siro
 siro, ra
@@ -83175,8 +83196,8 @@ siux
 sizigia
 sketch
 slip
+smartphone
 SMS
-snorkel
 so
 so-
 soalzar
@@ -83972,6 +83993,7 @@ sonrisa
 sonriso
 sonrisueño, ña
 sonrodarse
+sonrojante
 sonrojar
 sonrojear
 sonrojo
@@ -84229,7 +84251,6 @@ sotuer
 soturno, na
 soufflé
 soul
-souvenir
 sóviet
 soviético, ca
 sovietización
@@ -84237,7 +84258,6 @@ sovietizar
 sovoz
 soy
 soya
-spa
 spam
 spanglish
 sparring
@@ -84249,14 +84269,13 @@ spray
 sprint
 squash
 stabat mater
-stand
 standing
 statu quo
 stent
 stock
 stop
+streaming
 stricto sensu
-striptease
 su
 suabo, ba
 suadir
@@ -85668,6 +85687,8 @@ tangir
 tango
 tangó
 tangón
+tángram
+tangrama
 tangue
 tanguear
 tanguearse
@@ -85940,7 +85961,7 @@ tardo-
 tardo, da
 tardofranquismo
 tardomedieval
-tardomedievo
+Tardomedievo
 tardón, na
 tare
 taré
@@ -86135,7 +86156,6 @@ tauteo
 tautología
 tautológico, ca
 tautosilábico, ca
-tawahka
 taxáceo, a
 taxativamente
 taxativo, va
@@ -86384,6 +86404,8 @@ teleósteo
 telepate
 telepatía
 telepático, ca
+teleportación
+teleportar
 telepredicador, ra
 teleproceso
 telequinesia
@@ -86410,6 +86432,10 @@ teletón
 teletrabajador, ra
 teletrabajar
 teletrabajo
+teletransportación
+teletransportador, ra
+teletransportar
+teletransporte
 televenta
 televidencia
 televidente
@@ -86768,7 +86794,6 @@ tequioso, sa
 ter
 tera
 tera-
-terabyte
 terapeada
 terapear
 terapeuta
@@ -86908,6 +86933,7 @@ termopar
 termopausa
 termopila
 termoplástico, ca
+termoquímico, ca
 termorregulación
 termorresistente
 termos
@@ -87179,6 +87205,7 @@ tetrástilo, la
 tetrástrofo, fa
 tetravalente
 tétrico, ca
+tetris
 tetro
 tetro, tra
 tetuán
@@ -87211,6 +87238,8 @@ textual
 textualidad
 textualista
 textura
+texturización
+texturizado
 texturizar
 teyo, ya
 teyú
@@ -88370,7 +88399,6 @@ totumo
 totumpote
 tour
 tour de force
-tournée
 tova
 toxemia
 toxicar
@@ -89165,6 +89193,7 @@ trecenario
 trecenato
 trecenazgo
 treceno, na
+trecentista
 trecésimo, ma
 trecha
 trecheador
@@ -89349,7 +89378,7 @@ tricé
 tricefalia
 tricéfalo, la
 tricenal
-tricentenario
+tricentenario, ria
 tricentésimo, ma
 tríceps
 tricésimo, ma
@@ -89829,6 +89858,8 @@ trufa
 trufador, ra
 trufaldín, na
 trufar
+truficultor, ra
+truficultura
 truhan, na
 truhanada
 truhanamente
@@ -90144,6 +90175,8 @@ turificar
 turinés, sa
 turión
 turismo
+turismofobia
+turismofóbico, ca
 turista
 turistear
 turísticamente
@@ -90240,6 +90273,7 @@ tuyo, ya
 tuyuyo
 tuza
 twahka
+twist
 u
 ubajay
 ube
@@ -90705,6 +90739,8 @@ usurero, ra
 usurpación
 usurpador, ra
 usurpar
+ut retro
+ut supra
 uta
 utensilio
 uterino, na
@@ -91604,7 +91640,6 @@ veo
 ver
 vera
 verá
-vera effigies
 veracidad
 veracruzano, na
 veragua
