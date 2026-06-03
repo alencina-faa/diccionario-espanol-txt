@@ -6,7 +6,7 @@ This folder contains unit tests for the deterministic parts of the project. The 
 
 ### test_helpers.py
 
-Exercises plural generation rules implemented in src/helpers.py.
+Exercises helper-level rules implemented in src/helpers.py.
 
 Covered behavior:
 
@@ -17,6 +17,11 @@ Covered behavior:
 5. Consonant-based pluralization rules.
 6. Extraction helpers for conjugation, page headers, and plural confirmation.
 7. HTTP request building and retry behavior in get_xtree().
+
+Important note:
+
+1. Plural-related assertions here validate the standalone formar_plural helper only.
+2. They do not imply that the production download pipeline generates plural forms on its own.
 
 ### test_run_full_download.py
 
