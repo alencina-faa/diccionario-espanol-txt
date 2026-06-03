@@ -18,7 +18,7 @@ def parse_args(argv=None):
     return parser.parse_args(argv)
 
 def save_file(lista, file):
-    with open(file, 'w') as f:
+    with open(file, 'w', encoding='utf-8', newline='\n') as f:
         for item in lista:
             f.write(item + '\n')
 
